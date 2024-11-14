@@ -1,3 +1,3 @@
-public class Server extends Client {
-    
+public class Server {
+    //return 0;
 }
