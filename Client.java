@@ -1,25 +1,26 @@
-import java.util.*;
 import java.io.*;
 import java.net.*;
 
-
 public class Client {
-
     private Socket socket;
+    private PrintWriter out;
 
-    public Client (String localAddress, int port) throws IOException {
-        socket = new Socket(localAddress, port);
+    public Client(String host, int port) throws IOException {
+        socket = new Socket(host, port);
+        out = new PrintWriter(socket.getOutputStream(), true); 
     }
 
     public Socket getSocket() {
-        return socket; 
+        return socket;
     }
 
-    public void handShake() {
-        System.out.println("12345");
+    public void handshake() {
+        out.println("12345");
     }
 
-    public void disconnect() {
+    public void disconnect() throws IOException {
+        out.close();
         socket.close();
     }
 }
+
