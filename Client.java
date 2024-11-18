@@ -14,23 +14,11 @@ public class Client {
         socket.close();
     }
     */
-   
-    Socket sock=null;        
-    try{
-        sock = new Socket("localhost",2021);
-    }catch(Exception e){
-        System.err.println("Cannot Connect");
-        System.exit(1);
-    }
 
-    try{
-        PrintWriter pw = new PrintWriter(sock.getOutputStream());
-        pw.println("HelloWorld");
-        pw.close(); //close the stream
-        sock.close();//close the socket
-    }catch(Exception e){
-        System.err.print("IOException");
-        System.exit(1);
+    public Client(String host, int port) throws IOException {
+        this.host = host;
+        this.port = port;
+        this.socket = new Socket(host, port);
+        this.out = new PrintWriter(socket.getOutputStream(), true);
+        this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
-}
-
