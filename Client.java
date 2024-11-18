@@ -4,7 +4,7 @@ import java.net.*;
 public class Client {
     
     private Socket socket;
-    private PrintWrited out;
+    private PrintWriter out;
     private BufferedReader in;
 
 
